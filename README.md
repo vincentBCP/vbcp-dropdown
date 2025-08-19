@@ -1,6 +1,6 @@
 # vbcp-dropdown
 
-[Storybook](https://68a443019cc4013c2f065285-aetoejkklz.chromatic.com/?path=/docs/dropdown--docs)
+[Storybook](https://68a443019cc4013c2f065285-sfezquausa.chromatic.com/?path=/docs/dropdown--docs)
 
 #### Install Package
 

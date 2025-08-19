@@ -7,7 +7,7 @@ const CloseIcon: React.FC<{ onClick: () => void; contained?: boolean }> = ({
   return (
     <div
       className={clsx(
-        "text-lg flex items-center justify-center h-4 w-4 rounded-full rotate-45 cursor-pointer",
+        "shrink-0 text-lg flex items-center justify-center h-4 w-4 rounded-full rotate-45 cursor-pointer",
         {
           "bg-zinc-400 text-white": contained,
           "border border-zinc-600 text-zinc-600": !contained,

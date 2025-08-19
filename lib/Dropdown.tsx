@@ -58,10 +58,10 @@ const Dropdown = ({
 
   return (
     <div className="flex">
-      <span className="shrink-0 w-[150px] mt-2">{label}</span>
+      <span className="shrink-0 w-[150px] mt-2 mr-4">{label}</span>
       <div
         className={clsx(
-          "bg-white vbcp-dropdown relative grow-1 rounded-sm border border-zinc-300 py-1 pl-2 pr-4 flex flex gap-2 flex-wrap min-h-[44px]"
+          "bg-white vbcp-dropdown relative w-full h-fit rounded-sm border border-zinc-300 py-1 pl-2 pr-6 flex flex gap-2 flex-wrap min-h-[44px]"
         )}
         onClick={() => setOpen(!open)}
       >

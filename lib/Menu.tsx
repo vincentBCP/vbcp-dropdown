@@ -40,7 +40,7 @@ const Menu: React.FC<Props> = ({
           <input
             value={searchStr}
             onChange={(ev) => setSearchStr(ev.target.value)}
-            className="py-4 h-full grow-1 outline-none"
+            className="py-4 h-full grow-1 outline-none min-w-0"
           />
           {searchStr && (
             <CloseIcon onClick={() => setSearchStr("")} contained />

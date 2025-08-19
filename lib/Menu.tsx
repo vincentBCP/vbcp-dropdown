@@ -31,7 +31,7 @@ const Menu: React.FC<Props> = ({
 
   return (
     <div
-      className="absolute w-full h-fit left-0 top-full mt-2 border border-zinc-300 rounded-sm"
+      className="bg-white absolute w-full h-fit left-0 top-full mt-2 border border-zinc-300 rounded-sm"
       onClick={(ev) => ev.stopPropagation()}
     >
       {withSearch && (
@@ -50,6 +50,7 @@ const Menu: React.FC<Props> = ({
       {(searchResults.length < 1 ? options : searchResults).map((option) => (
         <Option
           key={option.value}
+          label={option.label}
           onClick={() => onClick(option.value)}
           selected={(value || "")
             .toLowerCase()

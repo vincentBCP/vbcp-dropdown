@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import Menu from "./Menu";
-import CloseIcon from "./CloseIcon";
 import Chevron from "./Chevron";
 import clsx from "clsx";
+import SelectedOption from "./SelectedOption";
 
 export interface IOption {
   value: string;
@@ -58,34 +58,30 @@ const Dropdown = ({
 
   return (
     <div className="flex">
-      <span className="w-[150px] mt-2">{label}</span>
+      <span className="shrink-0 w-[150px] mt-2">{label}</span>
       <div
         className={clsx(
-          "vbcp-dropdown relative grow-1 rounded-sm border border-zinc-300 py-1 px-2 flex flex gap-1 min-h-[44px]"
+          "bg-white vbcp-dropdown relative grow-1 rounded-sm border border-zinc-300 py-1 pl-2 pr-4 flex flex gap-2 flex-wrap min-h-[44px]"
         )}
         onClick={() => setOpen(!open)}
       >
         <Chevron down={open} />
         {value &&
           value?.split(",").map((val) => (
-            <div
+            <SelectedOption
               key={val}
-              className="text-sm rounded-full py-1 px-3 flex items-center gap-2 bg-zinc-100"
-              onClick={(ev) => ev.stopPropagation()}
+              onClose={() => {
+                onChange(
+                  value
+                    ?.split(",")
+                    .filter((v) => v !== val)
+                    .filter((v) => !!v)
+                    .join(",")
+                );
+              }}
             >
               {options.find((option) => option.value === val)?.label}
-              <CloseIcon
-                onClick={() => {
-                  onChange(
-                    value
-                      ?.split(",")
-                      .filter((v) => v !== val)
-                      .filter((v) => !!v)
-                      .join(",")
-                  );
-                }}
-              />
-            </div>
+            </SelectedOption>
           ))}
         {open && (
           <Menu

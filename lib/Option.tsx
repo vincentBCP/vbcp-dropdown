@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
 
 interface Props {
+  label: string;
   onClick: () => void;
   selected?: boolean;
   children: any;
@@ -9,6 +10,7 @@ interface Props {
 }
 
 const Option: React.FC<Props> = ({
+  label,
   children,
   onClick,
   selected,
@@ -32,14 +34,19 @@ const Option: React.FC<Props> = ({
       return;
     }
 
-    const regex = new RegExp(searchStr, "gi"); // Case-insensitive and global search
-    const innerHTML = originalHTML;
-    const highlightedHTML = innerHTML.replace(
-      regex,
+    const regex1 = new RegExp(searchStr, "gi"); // Case-insensitive and global search
+    const highlightedLabel = label.replace(
+      regex1,
       `<span class="bg-teal-300">$&</span>`
     );
+
+    const regex2 = new RegExp(label, "gi");
+
+    const innerHTML = originalHTML;
+    const highlightedHTML = innerHTML.replace(regex2, highlightedLabel);
+
     element.innerHTML = highlightedHTML;
-  }, [searchStr, originalHTML]);
+  }, [label, searchStr, originalHTML]);
 
   return (
     <div

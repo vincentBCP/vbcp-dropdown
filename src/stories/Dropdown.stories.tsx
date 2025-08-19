@@ -33,15 +33,22 @@ const meta = {
     multiple: false,
     withSearch: false,
   },
+  render: (args) => {
+    const [value, setValue] = useState<undefined | string>();
+    return <Dropdown {...args} value={value} onChange={setValue} />;
+  },
 } satisfies Meta<typeof Dropdown>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  render: (args) => {
-    const [value, setValue] = useState<undefined | string>();
-    return <Dropdown {...args} value={value} onChange={setValue} />;
+export const Default: Story = {};
+
+export const CustomOption: Story = {
+  args: {
+    renderOption: (option) => (
+      <span className="font-bold italic">{option.label}</span>
+    ),
   },
 };
